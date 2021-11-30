@@ -71,9 +71,6 @@ rel="stylesheet"
 
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
-<section class="wrapper">
-  <div id="content">{% block content %} {% endblock %}</div>
-</section>
 
 <div class="btn-group-vertical" role="toolbar" aria-label="Vertical button group">
   
@@ -281,7 +278,7 @@ rel="stylesheet"
             </ul>
         </div>
     </div>
-    
+    <div id="content">{% block content %} {% endblock %}</div>
   </body>
 </div>
 
