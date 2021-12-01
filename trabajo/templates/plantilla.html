@@ -66,14 +66,13 @@ rel="stylesheet"
   </div>
   {% endfor %}
 
- 
-
-
 <!-- MDB -->
+
+<div id="content" {% block content %} {% endblock %} 
+</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
 
-<div class="btn-group-vertical" role="toolbar" aria-label="Vertical button group">
-  
+<div class= "btn-group-vertical" role="toolbar" aria-label="Vertical button group">
     <div>
     <p style="color: #ffffff;background-color:rgb(28, 70, 15);font-size: 200%;">Cursos
     <p style="color: #ffffff;background-color:rgb(28, 70, 15)">Básica
@@ -200,8 +199,10 @@ rel="stylesheet"
         </div>
         <div>
         
+        
+        <p style="color: white;background-color:rgb(28, 70, 15)">Media                 
+        
         </div>
-        <p style="color: white;background-color:rgb(28, 70, 15)">Media
         <div class="btn-group" role="group">
             <button
             id="btnGroupVerticalDrop4"
@@ -278,7 +279,6 @@ rel="stylesheet"
             </ul>
         </div>
     </div>
-    <div id="content">{% block content %} {% endblock %}</div>
   </body>
 </div>
 

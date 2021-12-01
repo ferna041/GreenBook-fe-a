@@ -17,14 +17,14 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Has iniciado sesion correctamente')
-            return redirect('')
+            return redirect('green:home.html')
         else:
             messages.warning(
                 request, 'Correo Electronico o Contrasena invalida')
-            return redirect('')
+            return redirect('green:home.html')
 
     messages.error(request, 'Formulario Invalido')
-    return redirect('')
+    return redirect('green:home.html')
 
 
 def signup_view(request):
@@ -43,7 +43,7 @@ def signup_view(request):
                 is_active=True
             )
             login(request, user)
-            return redirect('')
+            return redirect('green:home.html')
 
         except Exception as e:
             print(e)
@@ -52,10 +52,10 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('')
+    return redirect('green:home.html')
 
 
-@login_required(login_url='')
+@login_required(login_url='green:home.html')
 def profile_view(request):
     return render(request, 'users/profile.html')
 
@@ -70,10 +70,10 @@ def user_detail(request, slug):
         messages.warning(
             request, 'Debes Iniciar sesion para mas funcionalidades')
 
-    return render(request, 'user/user_detail.html', {'user_detail': user, "is_follower": is_follower})
+    return render(request, 'users/user_detail.html', {'user_detail': user, "is_follower": is_follower})
 
 
-@login_required(login_url='')
+@login_required(login_url='green:home.html')
 def follow(request, slug):
     to_follow = get_object_or_404(get_user_model(), slug=slug)
     if to_follow.is_follower(request.user):
