@@ -65,7 +65,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'nombre'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email', "ciudad"]
 
     def __str__(self):
         return f'{self.nombre}'
