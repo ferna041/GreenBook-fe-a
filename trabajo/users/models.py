@@ -45,7 +45,7 @@ class CustomAccountManager(BaseUserManager):
 
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'))
+    email = models.EmailField(_('email address'), unique=True)
     nombre = models.CharField(max_length=15, unique=True)
     ciudad = models.CharField(max_length=30)
     profile_pic = models.ImageField(
@@ -64,8 +64,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     objects = CustomAccountManager()
 
-    USERNAME_FIELD = 'nombre'
-    REQUIRED_FIELDS = ['email', "ciudad"]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['nombre', "ciudad"]
 
     def __str__(self):
         return f'{self.nombre}'
