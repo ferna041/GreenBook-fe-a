@@ -1,9 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.conf import settings
+
+from users import models
+from users import forms
+from django.contrib.auth import authenticate, get_user_model, login, logout
+
 from .models import Post
 from green.form import PostForm
-from .models import Post
+from django.contrib.auth.models import User
+from users.models import UserProfile
 
 def home(request):
+    
     data = Post.objects.all()
     return render(request, "home.html", {"posts": data})
 #primero basico
@@ -177,8 +185,13 @@ def o8(request):
 
 
 def create_post(request):
+    current_user= get_user_model
     form = PostForm()
     if request.method == 'POST':
-        print(request.POST)
-    
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post =form.save(commit=False)
+            post.user =current_user
+            post.save()
+            return redirect('home.html')
     return render(request, 'post/posteos.html', {"form": form})
